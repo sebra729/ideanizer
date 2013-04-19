@@ -12,6 +12,8 @@ skolämne, webbflikar eller annan data. Flera användare ska även kunna kollaborer
 tidigt designförslag kan ses i figur 1 där en liten mindmap över Ideanizer. 
 
 
+![Alt text](/awebb.jpg "design bild")
+
 Technological specification:
 
 (1)	Server framework
