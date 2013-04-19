@@ -16,19 +16,19 @@ tidigt designförslag kan ses i figur 1 där en liten mindmap över Ideanizer.
 
 ## Technological specification:
 
-1.	### Server framework
+1. Server framework
 På serversidan skulle vi vilja använda oss utav node.js som verkar vara ett populärt och växande server verktyg.
 
-2.	### Client framework
+2. Client framework
 På client sidan JQuery. 
 
-3.	### JSON, XML or other protocol to send data between the server and client. 
+3. JSON, XML or other protocol to send data between the server and client. 
 Som protokol mellan server och klient kommer vi använda JSON. 
 
-4.	### ORM or data storage technique you will use. 
+4. ORM or data storage technique you will use. 
 Vi har kollat på alternativ för grafdatabas som skulle vara intressant att testa. Neo4j 
 är ett populärt verktyg för detta som också ofta används ihop med node js. 
 
-5.	authentication 
+5. Authentication 
 För inloggining verkar Passport js vara ett bra mellan verktyg för node js. Som är kompatibelt med både 
 openID och OAuth 2.0, Där OAuth verkar vara det mest användarvänliga ramverket.
