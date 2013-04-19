@@ -2,33 +2,33 @@ Projekt medlemmar:
 Sebastian Rauhala sebra729@student.liu.se
 Philip Zanderholm phiza664@student.liu.se
 
-# Projektidén – Ideanizer
-Projektiden är att utveckla en flexibel och webbaserad “idea board” som personer ska 
-kunna använda när de är i idéfasen av ett projekt, ge en överblick av ett befintligt 
-projekt eller även ha möjlighet att använda ideaboarden som ett scrumverktyg. Som en 
-anslagstavla på webben i stort sett men med mycket frihet. En liknande riktning skulle 
-vara att använda verktyget som ett hjälpmedel till att skapa en mental modell över tex ett 
-skolämne, webbflikar eller annan data. Flera användare ska även kunna kollaborera. Ett 
-tidigt designförslag kan ses i figur 1 där en liten mindmap över Ideanizer. 
+# ProjektidÃ©n â€“ Ideanizer
+Projektiden Ã¤r att utveckla en flexibel och webbaserad â€œidea boardâ€ som personer ska 
+kunna anvÃ¤nda nÃ¤r de Ã¤r i idÃ©fasen av ett projekt, ge en Ã¶verblick av ett befintligt 
+projekt eller Ã¤ven ha mÃ¶jlighet att anvÃ¤nda ideaboarden som ett scrumverktyg. Som en 
+anslagstavla pÃ¥ webben i stort sett men med mycket frihet. En liknande riktning skulle 
+vara att anvÃ¤nda verktyget som ett hjÃ¤lpmedel till att skapa en mental modell Ã¶ver tex ett 
+skolÃ¤mne, webbflikar eller annan data. Flera anvÃ¤ndare ska Ã¤ven kunna kollaborera. Ett 
+tidigt designfÃ¶rslag kan ses i figur 1 dÃ¤r en liten mindmap Ã¶ver Ideanizer. 
 
 
-![Alt text](/awebb.jpg "design bild")
+![Alt text](awebb.jpg "design bild")
 
 Technological specification:
 
 (1)	Server framework
-På serversidan skulle vi vilja använda oss utav node.js som verkar vara ett populärt och växande server verktyg.
+PÃ¥ serversidan skulle vi vilja anvÃ¤nda oss utav node.js som verkar vara ett populÃ¤rt och vÃ¤xande server verktyg.
 
 (2)	Client framework
-På client sidan JQuery. 
+PÃ¥ client sidan JQuery. 
 
 (3)	JSON, XML or other protocol to send data between the server and client. 
-Som protokol mellan server och klient kommer vi använda JSON. 
+Som protokol mellan server och klient kommer vi anvÃ¤nda JSON. 
 
 (4)	ORM or data storage technique you will use. 
-Vi har kollat på alternativ för grafdatabas som skulle vara intressant att testa. Neo4j 
-är ett populärt verktyg för detta som också ofta används ihop med node js. 
+Vi har kollat pÃ¥ alternativ fÃ¶r grafdatabas som skulle vara intressant att testa. Neo4j 
+Ã¤r ett populÃ¤rt verktyg fÃ¶r detta som ocksÃ¥ ofta anvÃ¤nds ihop med node js. 
 
 (5)	authentication 
-För inloggining verkar Passport js vara ett bra mellan verktyg för node js. Som är kompatibelt med både 
-openID och OAuth 2.0, Där OAuth verkar vara det mest användarvänliga ramverket.
+FÃ¶r inloggining verkar Passport js vara ett bra mellan verktyg fÃ¶r node js. Som Ã¤r kompatibelt med bÃ¥de 
+openID och OAuth 2.0, DÃ¤r OAuth verkar vara det mest anvÃ¤ndarvÃ¤nliga ramverket.
