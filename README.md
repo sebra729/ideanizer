@@ -12,7 +12,7 @@ skolämne, webbflikar eller annan data. Flera användare ska även kunna kollabo
 tidigt designförslag kan ses i figur 1 där en liten mindmap över Ideanizer. 
 
 
-![Alt text](/ideanizer/awebb.jpg "design bild")
+![Alt text](gitlab.ida.liu.se/sebra729/ideanizer/blob/master/awebb.jpg "design bild")
 
 Technological specification:
 
