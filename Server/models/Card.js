@@ -1,4 +1,4 @@
-var neo4j = require('neo4j');
+﻿var neo4j = require('neo4j');
 var db = new neo4j.GraphDatabase(process.env.NEO4J_URL || 'http://localhost:7474');
 
 //Constants
@@ -29,6 +29,11 @@ Object.defineProperty(Card.prototype, 'exists', {
     get: function () { return this._node.exists; }
 });
 
+Object.defineProperty(Card.prototype, 'data', {
+						//Creates node.data.id and sets node.id
+    get: function () { this._node.data.id = this._node.id; return this._node.data; }
+});
+
 Object.defineProperty(Card.prototype, 'cardname', {
     get: function () {
         return this._node.data['cardname'];
@@ -56,6 +61,7 @@ Card.getAll = function (user, callback) {
         // this error detection. warning: this is super brittle!!
         if (err) return callback(null, []);
         var cards = nodes.map(function (node) {
+			console.log("Haj " + node.toString());
             return new Card(node);
         });
         callback(null, cards);

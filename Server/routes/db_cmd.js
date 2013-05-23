@@ -22,8 +22,19 @@ var Card = require('../models/Card');
  exports.getAllCards = function(req, res, next) {
 	Card.getAll(req.params.user, function (err, cards) {
         if (err) return next(err);
+		
+		
+		var cardarray =[];
+		for(var i =0; i<cards.length;i++){
+			console.log("Kortens data " + JSON.stringify(cards[i].data));
+			
+			cardarray.push( cards[i].data );
+		}
+		
+		
         res.send('Cards', {
-				Card: cards
+				// Card: cards
+				Card: cardarray
         })
     });  
  }
