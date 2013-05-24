@@ -7,7 +7,7 @@ var Card = require('../models/Card');
  */
  exports.create = function (req, res, next) {
 	Card.create(
-		{cardname: req.body['cardname']},
+		{cardname: req.body['cardname'], img: req.body['img']},
 		{username: req.body['username']},
 		function (err, card) {
         if (err) return next(err);
