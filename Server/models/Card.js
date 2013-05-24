@@ -9,7 +9,7 @@ var INDEX_KEY = 'name';
 var INDEX_VALUE = 'username';
 
 //Relation
-var REL_Fol = 'follow'; 
+var RELATION = 'related'; 
 
 
 /*
@@ -48,6 +48,27 @@ Object.defineProperty(Card.prototype, 'cardName', {
     }
 });
 
+//Private  instance methods:
+Card.prototype._getFollowingRel = function (otherCard, callback) {
+    var query = [
+        'START card=node({cardId}), otherCard=node({otherCardId})',
+        'MATCH (card) -[rel?:RELATION]-> (otherCard)',
+        'RETURN rel'
+    ].join('\n')
+        .replace('RELATION', RELATION);
+
+    var params = {
+        cardId: this.id,
+        otherCardId: otherCard.id,
+    };
+
+    db.query(query, params, function (err, results) {
+        if (err) return callback(err);
+        var rel = results[0] && results[0]['rel'];
+        callback(null, rel);
+    });
+};
+
 
 // public instance methods:
 
@@ -65,6 +86,24 @@ Card.prototype.del = function (callback) {
         callback(err);
     }, true);   // true = yes, force it (delete all relationships)
 }
+
+//Adds relation between this card and otherCard
+Card.prototype.addRelation = function (otherCard, callback) {
+    this._node.createRelationshipTo(otherCard._node, RELATION, {}, function (err, rel) {
+        callback(err);
+    });
+};
+
+//Removes relation between this card an otherCard 
+Card.prototype.removeRelation = function (other, callback) {
+    this._getFollowingRel(other, function (err, rel) {
+        if (err) return callback(err);
+        if (!rel) return callback(null);
+        rel.del(function (err) {
+            callback(err);
+        });
+    });
+};
 
 //Get node by id and sets it as the this._node.
 Card.get = function(nodeID, callback) {

@@ -88,6 +88,39 @@ exports.update = function (req, res, next) {
     });
  }
  
+/*
+ * POST /card/:nodeId/addRelation
+ * Add relation between two nodes 
+ */
+exports.addRelation = function (req, res, next) {
+    Card.get(req.params.nodeId, function (err, card) {
+        if (err) return next(err);
+        Card.get(req.body['toNodeId'], function (err, otherCard) {
+            if (err) return next(err);
+            card.addRelation(otherCard, function (err) {
+                if (err) return next(err);
+                res.send('success! Relation added!');
+            });
+        });
+    });
+};
+
+/*
+ * POST /card/:nodeId/removeRelation
+ * Removes relation between two nodes 
+ */
+exports.removeRelation = function (req, res, next) {
+    Card.get(req.params.nodeId, function (err, card) {
+        if (err) return next(err);
+        Card.get(req.body['toNodeId'], function (err, otherCard) {
+            if (err) return next(err);
+            card.removeRelation(otherCard, function (err) {
+                if (err) return next(err);
+                res.send('success! Relation removed!');
+            });
+        });
+    });
+};
  
  
  
