@@ -31,15 +31,20 @@ Object.defineProperty(Card.prototype, 'exists', {
 
 Object.defineProperty(Card.prototype, 'data', {
 						//Creates node.data.id and sets node.id
-    get: function () { this._node.data.id = this._node.id; return this._node.data; }
+    get: function () { 
+	this._node.data.id = this._node.id; return this._node.data; 
+	},
+	set: function (data) {
+        this._node.data = data;
+    }
 });
 
-Object.defineProperty(Card.prototype, 'cardname', {
+Object.defineProperty(Card.prototype, 'cardName', {
     get: function () {
-        return this._node.data['cardname'];
+        return this._node.data['cardName'];
     },
-    set: function (cardname) {
-        this._node.data['cardname'] = cardname;
+    set: function (cardName) {
+        this._node.data['cardName'] = cardName;
     }
 });
 
@@ -53,6 +58,22 @@ Card.prototype.save = function (callback) {
     });
 };
 
+//Deletes a node
+//TODO maybe should not force delete
+Card.prototype.del = function (callback) {
+    this._node.del(function (err) {
+        callback(err);
+    }, true);   // true = yes, force it (delete all relationships)
+}
+
+//Get node by id and sets it as the this._node.
+Card.get = function(nodeID, callback) {
+	db.getNodeById(nodeID, function (err, node) {
+        if (err) return callback(err);
+        callback(null, new Card(node));
+    });
+}
+
 //Get all cards from a specific user.
 Card.getAll = function (user, callback) {
     db.getIndexedNodes(INDEX_NAME, INDEX_KEY, user, function (err, nodes) {
@@ -61,7 +82,6 @@ Card.getAll = function (user, callback) {
         // this error detection. warning: this is super brittle!!
         if (err) return callback(null, []);
         var cards = nodes.map(function (node) {
-			console.log("Haj " + node.toString());
             return new Card(node);
         });
         callback(null, cards);
@@ -70,13 +90,13 @@ Card.getAll = function (user, callback) {
 
 // creates the card and persists (saves) it to the db, incl. indexing it after the user:
 // Username should be sent from client 
-Card.create = function (data, username, callback) {
+Card.create = function (data, userName, callback) {
     var node = db.createNode(data);
     var card = new Card(node);
     node.save(function (err) {
         if (err) return callback(err);
 		//Indexate node to the user
-        node.index(INDEX_NAME, INDEX_KEY, username['username'], function (err) {
+        node.index(INDEX_NAME, INDEX_KEY, userName['userName'], function (err) {
             if (err) return callback(err);
             callback(null, card);
         });

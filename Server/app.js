@@ -35,6 +35,8 @@ app.get('/', routes.index);
 app.get('/users', user.list);
 app.post('/card', db_cmd.create);
 app.get('/card/:user', db_cmd.getAllCards);
+app.del('/card/:nodeId', db_cmd.del);
+app.post('/card/:nodeId', db_cmd.update);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
