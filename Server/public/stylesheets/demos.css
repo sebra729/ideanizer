@@ -1,0 +1,60 @@
+/*hmlt - min-height:100% is to stretch the background gradient to render in whole viewport  */
+html {
+   min-height: 100%;
+
+}
+
+body {
+	font-size: 62.5%;
+	font-family: "Trebuchet MS", "Arial", "Helvetica", "Verdana", "sans-serif";
+	width:100%;
+	height:100%;
+	
+
+	background: -moz-radial-gradient(center, ellipse cover, #e6eaf7 0%, #acafb7 73%, #7f8187 99%); /* FF3.6+ */
+	background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#e6eaf7), color-stop(73%,#acafb7), color-stop(99%,#7f8187)); /* Chrome,Safari4+ */
+	background: -webkit-radial-gradient(center, ellipse cover, #e6eaf7 0%,#acafb7 73%,#7f8187 99%); /* Chrome10+,Safari5.1+ */
+	background: -o-radial-gradient(center, ellipse cover, #e6eaf7 0%,#acafb7 73%,#7f8187 99%); /* Opera 12+ */
+	background: -ms-radial-gradient(center, ellipse cover, #e6eaf7 0%,#acafb7 73%,#7f8187 99%); /* IE10+ */
+	background: radial-gradient(ellipse at center, #e6eaf7 0%,#acafb7 73%,#7f8187 99%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e6eaf7', endColorstr='#7f8187',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+
+table {
+	font-size: 1em;
+}
+
+.demo-description {
+	clear: both;
+	padding: 12px;
+	font-size: 1.3em;
+	line-height: 1.4em;
+}
+
+.ui-draggable, .ui-droppable {
+	background-position: top;
+}
+
+
+
+#draggable, #draggable2 { 
+	width: 100px; 
+	height: 100px; 
+	padding: 0.5em; 
+	float: left; 
+	margin: 0 10px 10px 0; 
+}
+.box {  
+	padding: 0.5em; 
+	float: left; 
+	margin: 0 10px 10px 0; 
+}
+
+#draggable p { cursor: move; }
+
+/* 
+// needs latest Compass, add '@import "compass"' to your scss
+background-color: #e6eaf7; // Old browsers
+@include filter-gradient(#e6eaf7, #7f8187, horizontal); // IE6-9 fallback on horizontal gradient
+@include background-image(radial-gradient(center, ellipse cover, #e6eaf7 0%,#acafb7 73%,#7f8187 99%));
+*/
