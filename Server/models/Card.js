@@ -31,7 +31,12 @@ Object.defineProperty(Card.prototype, 'exists', {
 
 Object.defineProperty(Card.prototype, 'data', {
 						//Creates node.data.id and sets node.id
-    get: function () { this._node.data.id = this._node.id; return this._node.data; }
+    get: function () { 
+	this._node.data.id = this._node.id; return this._node.data; 
+	},
+	set: function (data) {
+        this._node.data = data;
+    }
 });
 
 Object.defineProperty(Card.prototype, 'cardName', {
