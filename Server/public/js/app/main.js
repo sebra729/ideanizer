@@ -7,7 +7,8 @@
 	requirejs.config({
 			"packages": ["test"]
 		});
-    //the jquery.alpha.js and jquery.beta.js plugins have been loaded.
+		
+	//jquery dom ready function
     $(function() {
         
 		//Loading nodes from server
@@ -21,7 +22,8 @@
 		var nodeData = {
 							img: "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTItbWKon_I94Tj2MXWLPkIxM_wRpZoDE60vOgiNnzFtG-qWETxrg",
 							cardname: "Hund",
-							id: 10
+							id: 10,
+							//web: "http://sv.wikipedia.org/wiki/Anus"
 						};
 		
 		

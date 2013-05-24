@@ -19,8 +19,16 @@
 	
 	//
 	var _initCardFromData = function(_data){
-		if(_data.img != 'undefined')
+		
+		if(!(typeof _data.web === "undefined"))
+			_cardFunctions.addWeb(_data.web);
+		
+		if(!(typeof _data.img === "undefined"))
 			_cardFunctions.addImg(_data.img);
+			
+		if(!(typeof _data.cardname === "undefined"))
+			_cardFunctions.addTitle(_data.cardname);
+		
 	};
 	
 	//Drag events 
@@ -51,11 +59,16 @@
 			_html.append('<img src="'+img+'" />');
 		},
 		addTitle: function(title){
-			_html.append('<img src="'+img+'" />');
+			_html.prepend('<h3>'+title+'</h3>');
 		},
 		
 		addText: function( text ){
 			_html.append('<p>'+text+'</p>');
+		},
+		
+		addWeb: function( src ){
+			_html.append($("<iframe width='540' height='350' src="+src+"></iframe>") );
+			
 		}
 	};
 	
@@ -65,6 +78,7 @@
 	//Public exposed functions 
 	Card.prototype.addImg = _cardFunctions.addImg;
 	Card.prototype.addText = _cardFunctions.addText;
+	Card.prototype.addWeb = _cardFunctions.addWeb;
 	
 
 	Card.prototype.onClick = function(callback){
