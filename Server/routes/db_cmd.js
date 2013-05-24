@@ -47,7 +47,7 @@ var Card = require('../models/Card');
  }
  
  /*
- * POST /card/:nodeId
+ * PUT /card/:nodeId
  * Updates a node on node id 
  */
 exports.update = function (req, res, next) {
@@ -73,6 +73,23 @@ exports.update = function (req, res, next) {
 			});
     });
 };
+
+ /*
+ * PUT /card/update/:nodeId
+ * Updates a value of node data on node id 
+ * parms changePar, updatePar
+ */
+exports.updatePos = function (req, res, next) {
+	Card.get(req.params.nodeId, function(err, card) {
+		if (err) return next(err);
+		card.data[req.body['changePar']] = req.body['updatePar']
+		card.save(function (err) {
+            if (err) return next(err);
+			//Success respons 
+            res.send('succsess!, node position updated!');
+		});
+	});
+}
  
  /*
  *DELETE /card/:nodeId
