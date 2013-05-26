@@ -48,7 +48,19 @@
 			$title : $('#title')
 		};
 		
+		var serverSpeaker = {
+			update: function(id,text){
+					$.ajax({
+					   url: 'http://localhost:3000/card/update/'+ id,
+					   type: 'PUT',
+					   data: { changePar:'cardname', updatePar: text},
+					   success: function(response) {
+						
+						 console.log(response);
+					   }
+					})}
 		
+		};
 		
 		
 		//	Functions for the card
@@ -72,6 +84,7 @@
 														if(e.which == 13) {
 															title.text(input.val()).show();
 															input.hide();
+															serverSpeaker.update(id,input.val());
 															
 														}})
 						
