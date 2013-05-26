@@ -85,7 +85,7 @@
 															title.text(input.val()).show();
 															input.hide();
 															//property to update, node id, new property value
-															serverSpeaker.update('cardname',id,input.val());
+															serverSpeaker.update('cardName',id,input.val());
 															
 														}})
 						
@@ -121,11 +121,11 @@
 			if(!(typeof data.web === "undefined"))
 				self.cardFunctions.addWeb(data.web);
 			
-			if(!(typeof data.img === "undefined"))
-				self.cardFunctions.addImg(data.img);
+			if(!(typeof data.imgUrl === "undefined"))
+				self.cardFunctions.addImg(data.imgUrl);
 				
-			if(!(typeof data.cardname === "undefined"))
-				self.cardFunctions.addTitle(data.cardname,data.id);
+			if(!(typeof data.cardName === "undefined"))
+				self.cardFunctions.addTitle(data.cardName,data.id);
 			
 		};
 		
@@ -145,8 +145,8 @@
 	
 
 	//Public exposed functions 
-	Card.prototype.addImg = function(img){
-				this.root.append('<img src="'+img+'" />');
+	Card.prototype.addImg = function(imgUrl){
+				this.root.append('<img src="'+imgUrl+'" />');
 			};
 	
 	// Card.prototype.addText = _cardFunctions.addText;
