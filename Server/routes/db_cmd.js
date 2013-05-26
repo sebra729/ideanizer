@@ -82,11 +82,17 @@ exports.update = function (req, res, next) {
 exports.updatePos = function (req, res, next) {
 	Card.get(req.params.nodeId, function(err, card) {
 		if (err) return next(err);
+		var oldValue = card.data[req.body['changePar']];
 		card.data[req.body['changePar']] = req.body['updatePar']
 		card.save(function (err) {
             if (err) return next(err);
 			//Success respons 
-            res.send('succsess!, node position updated!');
+            res.send(	{
+						success: true, 
+						updated: {  parameter: req.body['changePar'],
+									oldValue: oldValue, 
+									newValue: req.body['updatePar'] 
+									}});
 		});
 	});
 }

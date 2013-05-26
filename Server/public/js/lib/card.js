@@ -49,11 +49,11 @@
 		};
 		
 		var serverSpeaker = {
-			update: function(id,text){
+			update: function(toChange, nodeId, newValue){
 					$.ajax({
-					   url: 'http://localhost:3000/card/update/'+ id,
+					   url: 'http://localhost:3000/card/update/'+ nodeId,
 					   type: 'PUT',
-					   data: { changePar:'cardname', updatePar: text},
+					   data: { changePar: toChange, updatePar: newValue},
 					   success: function(response) {
 						
 						 console.log(response);
@@ -84,7 +84,8 @@
 														if(e.which == 13) {
 															title.text(input.val()).show();
 															input.hide();
-															serverSpeaker.update(id,input.val());
+															//property to update, node id, new property value
+															serverSpeaker.update('cardname',id,input.val());
 															
 														}})
 						
