@@ -85,7 +85,7 @@
 															title.text(input.val()).show();
 															input.hide();
 															//property to update, node id, new property value
-															serverSpeaker.update('cardname',id,input.val());
+															serverSpeaker.update('cardName',id,input.val());
 															
 														}})
 						
