@@ -3,8 +3,7 @@
 	
 	//jäkligt privat variabel!
 	var _html ="";
-	
-	
+	var numberOfCards = 0;
 	//The initial html creation variable from where the Card is going to grow from
 	var _createHtml = function() {
 		_html = $('<div>', {
@@ -27,14 +26,49 @@
 			_cardFunctions.addImg(_data.img);
 			
 		if(!(typeof _data.cardname === "undefined"))
-			_cardFunctions.addTitle(_data.cardname);
+			_cardFunctions.addTitle(_data.cardname,_data.id);
 		
 	};
 	
-	//Drag events 
-	var _eventhandler = function() {
+	
+	
+	//Construkktorr
+	var Card = function Card(_data){
+		numberOfCards++;
+		this._CardData = _data;
+		_CardData = _data;
+		_createHtml();
+		_initCardFromData(_data);
+		_eventhandler(_data);
+		console.log("creating node " + _data.id);
+		
+		
+		
+
+	};
+	
+	
+	
+	var cardElements = {
+			$cardName : $('#cardName'),
+			$text : $('#text'),
+			$image : $('#image'),
+			$title : $('#title')
+		};
+	
+		//Drag events 
+	var _eventhandler = function(_data) {
 		dragstop : _html.on( "dragstop", function( event, ui ) {
-			console.log(JSON.stringify(ui.position));
+			console.log(JSON.stringify(ui.position  + " elementet " + JSON.stringify(cardElements.$title)));
+			// $.ajax({
+			   // url: 'http://localhost:3000/card/update/'+ _CardData.id,
+			   // type: 'PUT',
+			   // data: { changePar:'cardname', updatePar: 'tyrty'},
+			   // success: function(response) {
+				
+				 // console.log(response);
+			   // }
+			// });
 		})
 		
 		dragstart : _html.on( "dragstart", function( event, ui ) {
@@ -42,24 +76,17 @@
 		})
 	};
 	
-	
-	//Construkktorr
-	var Card = function(_data){
-		this._data = _data
-		_createHtml();
-		_initCardFromData(_data);
-		_eventhandler();
-	};
-	
-	
-	
 	//Functions for the card
 	var _cardFunctions = {
 		addImg: function(img){
 			_html.append('<img src="'+img+'" />');
 		},
-		addTitle: function(title){
-			_html.prepend('<h3>'+title+'</h3>');
+		addTitle: function(title,id){
+			// if(cardElements.$title.length) 
+			// cardElements.$title.empty();
+			cardElements.$title = $('<h3 class="title'+id+'">'+title+'</h3>');
+			// cardElements.$title.html('<h3 class="title">'+title+'</h3>');
+			_html.prepend(cardElements.$title);
 		},
 		
 		addText: function( text ){
@@ -79,6 +106,7 @@
 	Card.prototype.addImg = _cardFunctions.addImg;
 	Card.prototype.addText = _cardFunctions.addText;
 	Card.prototype.addWeb = _cardFunctions.addWeb;
+	Card.prototype.addTitle = _cardFunctions.addTitle;
 	
 
 	Card.prototype.onClick = function(callback){

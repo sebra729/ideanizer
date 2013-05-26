@@ -53,12 +53,12 @@ var Card = require('../models/Card');
 exports.update = function (req, res, next) {
     Card.get(req.params.nodeId, function (err, card) {
         if (err) return next(err);
-        card.data = 
-		{cardName: req.body['cardName'],
-		text: req.body['text'], 
-		imageUrl: req.body['imageUrl'], 
-		position: req.body['position'],
-		orientation: req.body['orientation']
+		card.data = {
+			cardName: req.body['cardName'],
+			text: req.body['text'], 
+			imageUrl: req.body['imageUrl'], 
+			position: req.body['position'],
+			orientation: req.body['orientation']
 		};
         card.save(function (err) {
             if (err) return next(err);
