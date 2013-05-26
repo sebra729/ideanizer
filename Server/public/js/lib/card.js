@@ -121,8 +121,10 @@
 			if(!(typeof data.web === "undefined"))
 				self.cardFunctions.addWeb(data.web);
 			
-			if(!(typeof data.imgUrl === "undefined"))
-				self.cardFunctions.addImg(data.imgUrl);
+
+			if(!(typeof data.imageUrl === "undefined"))
+				self.cardFunctions.addImg(data.imageUrl);
+
 				
 			if(!(typeof data.cardName === "undefined"))
 				self.cardFunctions.addTitle(data.cardName,data.id);

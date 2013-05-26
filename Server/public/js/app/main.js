@@ -24,13 +24,16 @@
 		
 		
 		//Loading nodes from server
+
 		$.get('http://localhost:3000/card/Sture', function(data) {
+
 			data.Card.map(function(card){
 				new Card(card);
 			});
 			console.log('Load was performed.');
 		});
 		
+
 		
 		
 		
