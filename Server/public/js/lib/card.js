@@ -121,11 +121,11 @@
 			if(!(typeof data.web === "undefined"))
 				self.cardFunctions.addWeb(data.web);
 			
-			if(!(typeof data.img === "undefined"))
-				self.cardFunctions.addImg(data.img);
+			if(!(typeof data.imageUrl === "undefined"))
+				self.cardFunctions.addImg(data.imageUrl);
 				
-			if(!(typeof data.cardname === "undefined"))
-				self.cardFunctions.addTitle(data.cardname,data.id);
+			if(!(typeof data.cardName === "undefined"))
+				self.cardFunctions.addTitle(data.cardName,data.id);
 			
 		};
 		
