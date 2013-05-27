@@ -53,7 +53,7 @@
 		var serverSpeaker = {
 			update: function(toChange, nodeId, newValue){
 					$.ajax({
-					   url: 'http://localhost:3000/card/update/'+ nodeId,
+					   url: '/card/update/'+ nodeId,
 					   type: 'PUT',
 					   data: { changePar: toChange, updatePar: newValue},
 					   success: function(response) {
@@ -64,7 +64,7 @@
 			create: function(data,callback){
 				
 					$.ajax({
-					   url: 'http://localhost:3000/card',
+					   url: '/card',
 					   type: 'POST',
 					   data: data,
 					   success: function(response) {
