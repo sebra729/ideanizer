@@ -30,6 +30,8 @@
 		//Sets the instansiated data
 		this.data = _data;
 
+		
+		
 		this.eventHandler = new CardEventHandler(this.root,this.data);
 		
 		
@@ -58,9 +60,23 @@
 						
 						 console.log(response);
 					   }
+					})},
+			create: function(data,callback){
+				
+					$.ajax({
+					   url: 'http://localhost:3000/card',
+					   type: 'POST',
+					   data: data,
+					   success: function(response) {
+						 //self.data = response;
+						 
+						 callback(response);
+					   }
 					})}
-		
 		};
+		
+		
+		
 		
 		
 		//	Functions for the card
@@ -116,7 +132,7 @@
 		
 		
 		//
-		initCardFromData = function(data){
+		var initCardFromData = function(data){
 			
 			if(!(typeof data.web === "undefined"))
 				self.cardFunctions.addWeb(data.web);
@@ -124,14 +140,25 @@
 
 			if(!(typeof data.imageUrl === "undefined"))
 				self.cardFunctions.addImg(data.imageUrl);
-
+				
 				
 			if(!(typeof data.cardName === "undefined"))
 				self.cardFunctions.addTitle(data.cardName,data.id);
 			
 		};
 		
-		initCardFromData(this.data);
+		//doesnt exist in databas call create
+		if((typeof this.data.id === "undefined")){
+			serverSpeaker.create(this.data, function(data){
+				console.log(data);
+				initCardFromData(data.Card);
+				//self.addImg(data.Card.imageUrl);
+			});
+		}else{
+			initCardFromData(this.data);
+		}
+		
+		
 		
 		
 		

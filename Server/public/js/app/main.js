@@ -12,13 +12,18 @@
     $(function() {
         
 		var defaultData = {
-							img: "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTItbWKon_I94Tj2MXWLPkIxM_wRpZoDE60vOgiNnzFtG-qWETxrg",
+							imageUrl: "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTItbWKon_I94Tj2MXWLPkIxM_wRpZoDE60vOgiNnzFtG-qWETxrg",
+							//imageUrl: "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTItbWKon_I94Tj2MXWLPkIxM_wRpZoDE60vOgiNnzFtG-qWETxrg",
 							cardName: "no name given",
+							text: "no porfavor",
+							position: "{top:30,left:40}",
+							orientation: "lorient",
+							userName: "Sture"
 						};
 		
 		$(document).keypress(function(e) {
 										if(e.which == 78) {
-											new Card(defaultData)
+											var myCard = new Card(defaultData)
 											
 										}})
 		

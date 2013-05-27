@@ -17,14 +17,18 @@ var Card = require('../models/Card');
 		function (err, card) {
 			if (err) return next(err);
 			//Success respons 
-			res.send('succsess!, new node created! \n'+ 
-				req.body['userName'] 	+ '\n' + 
-				req.body['cardName'] 	+ '\n' +
-				req.body['text'] 		+ '\n' +
-				req.body['imageUrl'] 	+ '\n' +
-				req.body['position'] 	+ '\n' +
-				req.body['orientation']
-			);
+			// res.send('succsess!, new node created! \n'+ 
+				// req.body['userName'] 	+ '\n' + 
+				// req.body['cardName'] 	+ '\n' +
+				// req.body['text'] 		+ '\n' +
+				// req.body['imageUrl'] 	+ '\n' +
+				// req.body['position'] 	+ '\n' +
+				// req.body['orientation']
+			// );
+			res.send('Cards', {
+				// Card: cards
+				Card: card.data
+			})
     });
  }
  
