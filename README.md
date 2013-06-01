@@ -1,3 +1,6 @@
+Screencast:
+http://youtu.be/gfFkHRgm0n8
+
 Projekt medlemmar:
 Sebastian Rauhala sebra729@student.liu.se
 Philip Zanderholm phiza664@student.liu.se
